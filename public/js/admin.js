@@ -49801,10 +49801,10 @@ var app = new Vue({
   },
   methods: {
     openModal: function openModal(e, id) {
-      e.preventDefault();
-      console.log(id);
-      this.postid = id;
-      console.log(e.currentTarget);
+      e.preventDefault(); //console.log(id);
+
+      this.postid = id; //console.log(e.currentTarget);
+
       this.currentForm = e.currentTarget.parentNode;
       console.log(this.currentForm);
       $('#deleteModal').modal('show');

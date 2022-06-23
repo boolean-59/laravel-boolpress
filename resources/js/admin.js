@@ -36,9 +36,9 @@ const app = new Vue({
     methods:{
         openModal(e,id){
             e.preventDefault();
-            console.log(id);
+            //console.log(id);
             this.postid = id;
-            console.log(e.currentTarget);
+            //console.log(e.currentTarget);
             this.currentForm= e.currentTarget.parentNode;
             console.log(this.currentForm);
             $('#deleteModal').modal('show');
