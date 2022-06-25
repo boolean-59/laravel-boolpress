@@ -5,11 +5,17 @@
     @method('PUT')
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
-      <input type="text" class="form-control" id="title" name="title" value="{{old('title', $post->title)}}" placeholder="Inserisci titolo">
+      <input type="text" class="form-control  @error('title') is-invalid @enderror" id="title" name="title" value="{{old('title', $post->title)}}" placeholder="Inserisci titolo">
+      @error('title')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="mb-3">
       <label for="content" class="form-label">Content</label>
-        <textarea class="form-control" name="content" id="content" cols="30" rows="10">{{old('content', $post->content)}}</textarea>
+        <textarea class="form-control @error('content') is-invalid @enderror" name="content" id="content" cols="30" rows="10">{{old('content', $post->content)}}</textarea>
+        @error('content')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
     </div>
     <div class="mb-3">
         <label for="category" class="form-label">Category</label>
@@ -27,8 +33,16 @@
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" {{old('published', $post->published ) ? 'checked' : ''}} id="published" name="published">
       <label class="form-check-label"  for="published">Published</label>
+      @error('published')
+        <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+    bkLib.onDomLoaded(nicEditors.allTextAreas);
+  </script>
 @endsection

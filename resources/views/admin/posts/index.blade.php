@@ -1,28 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-  <!-- Modal -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Confirm post delete</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          Sei sicuro di voler eliminare il post con id: @{{postid}} ?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" @@click="submitForm()">Si cancella</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<a href="{{route('admin.posts.create')}}" class="btn btn-primary">Crea nuovo post</a>
+@include('partials/popupdelete')
+<a href="{{route('admin.posts.create')}}" class="btn btn-primary mb-3">Crea nuovo post</a>
 @if(session()->has('message'))
-	<div class="alert alert-success">
+	<div class="alert alert-success mb-3 mt-3">
 		 {{session()->get('message')}}
 	</div>
 @endif
@@ -47,7 +28,7 @@
             <form action="{{route('admin.posts.destroy', $post->id)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="submit" @@click="openModal($event, {{$post->id}})" class="btn btn-warning delete">Delete</button>
+                <button type="submit" onclick="boolpress.openModal(event, {{$post->id}})" class="btn btn-warning delete">Delete</button>
             </form>
         </td>
       </tr>
@@ -56,6 +37,6 @@
 
     </tbody>
   </table>
-
+  {{ $posts->links() }}
 @endsection
 
