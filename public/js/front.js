@@ -1915,13 +1915,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AppMain',
   data: function data() {
     return {
       'titolo': 'Work In Progress',
-      'sottotitolo': 'Sito in Costruzione'
+      'sottotitolo': 'Sito in Costruzione',
+      posts: []
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get("/api/posts").then(function (response) {
+      _this.posts = response.data;
+    });
   }
 });
 
@@ -37543,6 +37570,49 @@ var render = function () {
     _c("h1", [_vm._v(_vm._s(_vm.titolo))]),
     _vm._v(" "),
     _c("h2", [_vm._v(_vm._s(_vm.sottotitolo))]),
+    _vm._v(" "),
+    _c("section", [
+      _c("h2", [_vm._v("Lista Posts")]),
+      _vm._v(" "),
+      _c(
+        "ul",
+        _vm._l(_vm.posts, function (post) {
+          return _c("li", { key: post.id }, [
+            _c("h3", [_vm._v(_vm._s(post.title))]),
+            _vm._v(" "),
+            post.category
+              ? _c("p", [
+                  _c("strong", [_vm._v("Categoria:")]),
+                  _vm._v(" " + _vm._s(post.category.name)),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            post.tags && post.tags.length > 0
+              ? _c("div", [
+                  _c("strong", [_vm._v("Tags")]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    _vm._l(post.tags, function (tag) {
+                      return _c("li", { key: tag.id }, [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(tag.name) +
+                            "\n                    "
+                        ),
+                      ])
+                    }),
+                    0
+                  ),
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            _c("p", { domProps: { innerHTML: _vm._s(post.content) } }),
+          ])
+        }),
+        0
+      ),
+    ]),
   ])
 }
 var staticRenderFns = []
@@ -49911,31 +49981,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
 
 var app = new Vue({
   el: '#root',
