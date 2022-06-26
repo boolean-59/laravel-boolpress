@@ -49,7 +49,7 @@
          @enderror
     </div>
     <div class="form-group">
-        <p>Tags</p>
+        <p><strong>Tags</strong></p>
         @foreach ($tags as $tag)
             <div class="form-check form-check-inline">
 
@@ -65,12 +65,16 @@
             <div class="alert alert-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" {{old('published', $post->published ) ? 'checked' : ''}} id="published" name="published">
-      <label class="form-check-label"  for="published">Published</label>
-      @error('published')
-        <div class="alert alert-danger">{{ $message }}</div>
-      @enderror
+    <div class="form-group">
+        <p><strong>Check to publish</strong></p>
+        <div class="form-check form-check-inline">
+
+            <input type="checkbox" class="form-check-input" {{old('published', $post->published ) ? 'checked' : ''}} id="published" name="published">
+            <label class="form-check-label"  for="published">Published</label>
+            @error('published')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
