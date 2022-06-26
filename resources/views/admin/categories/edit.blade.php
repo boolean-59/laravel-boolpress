@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
     <section class="container">
         <div class="row justify-content-center">
@@ -17,6 +18,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+
                     </div>
                 </div>
             </div>

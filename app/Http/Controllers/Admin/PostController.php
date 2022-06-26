@@ -133,6 +133,8 @@ class PostController extends Controller
 
         if(isset($data['tags'])){
             $post->tags()->sync($data['tags']);
+        } else {
+            $post->tags()->sync([]);
         }
         return redirect()->route('admin.posts.show', $post->id);
     }

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@include('partials/popupdelete')
 @section('content')
     <section class="container">
         <div class="row justify-content-center">
@@ -19,6 +19,16 @@
                                 @endforeach
                             </ul>
                         @endif
+                        <div class="d-flex align-items-start">
+                            <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-primary mr-2">Edit</a>
+                            <form action="{{ route('admin.tags.destroy', $tag->id) }}" method="post" >
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    onclick="boolpress.openModal(event, {{ $tag->id }})"
+                                    class="btn btn-warning delete">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
