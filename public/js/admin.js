@@ -37279,13 +37279,13 @@ window.boolpress = {
   currentForm: null,
   itemid: null,
   openModal: function openModal(e, id) {
-    e.preventDefault();
-    console.log(id);
+    e.preventDefault(); //console.log(id);
+
     this.itemid = id; //console.log(e.currentTarget);
 
     this.currentForm = e.currentTarget.parentNode; // console.log(this.currentForm);
 
-    $('#deleteModal-body').html("sei sicuro di voler eliminare l'elemento con id: ".concat(this.itemid));
+    $('#deleteModal-body').html("Sei sicuro di voler eliminare l'elemento con id: ".concat(this.itemid));
     $('#deleteModal').modal('show');
   },
   previewImage: function previewImage() {
