@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+         $posts = Post::paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -38,6 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        //select * from categories
         $categories = Category::all();
         $tags = Tag::all();
         return view('admin.posts.create', compact('categories','tags'));
@@ -81,7 +82,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
+         //select * from posts where id = '5'
         $post = Post::findOrFail($id);
+        // $post = Post::find($id);
+        // if(empty($post)){
+        //     abort(404);
+        // }
         return view('admin.posts.show', compact('post'));
     }
 

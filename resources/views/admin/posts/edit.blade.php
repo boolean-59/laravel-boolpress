@@ -42,6 +42,7 @@
         @if ($post->image)
             <img id="uploadPreview" width="100" src="{{asset("storage/{$post->image}")}}" alt="{{$post->title}}">
         @endif
+        {{-- manca else --}}
         <label for="image">Aggiungi immagine</label>
         <input type="file" id="image" name="image" onchange="boolpress.previewImage();">
         @error('image')
