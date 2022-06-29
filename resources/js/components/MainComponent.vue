@@ -1,5 +1,5 @@
 <template>
-    <main>
+    <main class="container">
         <router-view></router-view>
     </main>
 
@@ -10,7 +10,6 @@ export default {
     name: 'MainComponent',
     data(){
         return {
-            posts: []
 
         }
     }
