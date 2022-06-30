@@ -2056,6 +2056,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'HomeComponent'
 });
@@ -3681,7 +3689,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("section", [_c("h1", [_vm._v(" Home")])])
+    return _c("section", { staticClass: "container" }, [
+      _c("h1", [_vm._v(" Home")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col col-md-8" }, [
+          _vm._v("\n            left\n        "),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-md-4" }, [
+          _vm._v("\n            right\n        "),
+        ]),
+      ]),
+    ])
   },
 ]
 render._withStripped = true

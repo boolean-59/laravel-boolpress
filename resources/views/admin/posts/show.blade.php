@@ -29,6 +29,7 @@
                                 <li>{{ $item->name }}</li>
                             @endforeach
                         </ul>
+                        {{-- @if (auth()->user()->id == $post->user_id) --}}
                         <div class="d-flex align-items-start">
                             <a href="{{ route('admin.posts.edit', $post->id) }}"
                                 class="btn btn-primary mr-2">Edit</a>
@@ -40,6 +41,8 @@
                                     class="btn btn-warning delete">Delete</button>
                             </form>
                         </div>
+                        {{-- @endif --}}
+
                     </div>
                 </div>
             </div>

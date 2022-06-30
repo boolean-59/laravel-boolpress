@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Category;
 use App\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function index()
     {
-         $posts = Post::paginate(5);
+        //  $currentUser = Auth::user();
+        //  $posts = Post::where('post_id',$currentUser->id)->paginate(5);
+        $post =  Post::paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
 
@@ -82,11 +85,17 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+
          //select * from posts where id = '5'
         //$post = Post::findOrFail($id);
         // $post = Post::find($id);
         // if(empty($post)){
         //     abort(404);
+        // }
+        // $currentUser = Auth::user();
+        //dd($currentUser->id);
+        // if($currentUser->id != $post->user_id && $currentUser->id != 1){
+        //     abort(403);
         // }
         return view('admin.posts.show', compact('post'));
     }
