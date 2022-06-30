@@ -91,8 +91,6 @@ export default {
 }
 </script>
 <style lang="scss">
- img {
-    width:200px;
- }
+
 
 </style>

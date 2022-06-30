@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         //  $currentUser = Auth::user();
         //  $posts = Post::where('post_id',$currentUser->id)->paginate(5);
-        $post =  Post::paginate(5);
+        $posts =  Post::paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
 
