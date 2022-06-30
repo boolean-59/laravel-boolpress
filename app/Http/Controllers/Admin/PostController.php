@@ -80,10 +80,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
          //select * from posts where id = '5'
-        $post = Post::findOrFail($id);
+        //$post = Post::findOrFail($id);
         // $post = Post::find($id);
         // if(empty($post)){
         //     abort(404);
