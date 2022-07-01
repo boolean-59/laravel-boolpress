@@ -16,7 +16,7 @@
                             {{ $post->published ? 'Published' : 'Draft' }}</span>
                         @if ($post->image)
                             <div class="text-center w-25 mt-3">
-                                <img src="{{ asset('storage/' . $post->image) }}" class="rounded "
+                                <img src="{{ asset('storage/' . $post->image) }}" class="rounded img-fluid"
                                     alt="{{ $post->title }}">
                             </div>
                         @endif

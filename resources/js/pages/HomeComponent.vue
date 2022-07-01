@@ -1,6 +1,10 @@
 <template>
     <section class="container">
         <h1> Home</h1>
+        <button @click="addtoCart(posts[0].title)">Aggiungi al carrello</button>
+        <div class="card" v-if="carrello">
+            {{carrello.nomeprodotto}} : € {{carrello.prezzo}}
+        </div>
         <div class="row">
             <div class="col col-md-12 carousel" v-if="posts.length > 0">
                 <agile>
@@ -25,7 +29,16 @@ export default {
     },
     data(){
         return {
-            posts: []
+            posts: [],
+            carrello: null
+        }
+    },
+    methods:{
+        addtoCart(prodotto,price=300){
+            window.localStorage.setItem('nomeprodotto',prodotto);
+            window.localStorage.setItem('prezzo',price);
+            this.carrello = {nomeprodotto: prodotto, prezzo: price};
+
         }
     },
     created(){
@@ -34,11 +47,12 @@ export default {
         }).catch((error)=>{
             console.log(error);
         })
+        this.carrello = {nomeprodotto: window.localStorage.getItem('nomeprodotto') ,prezzo: window.localStorage.getItem('prezzo')}
     }
 }
 </script>
 <style lang="scss">
-h3{
+.slide h3{
     position:absolute;
     top: 250px;
 }
@@ -90,7 +104,7 @@ h3{
 }
 
 .slide {
-    position:relative;
+  position:relative;
   align-items: center;
   color: #fff;
   display: flex;

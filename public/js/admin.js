@@ -37322,7 +37322,12 @@ try {
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-} catch (e) {}
+} catch (e) {} // per bootastrap 5 disinstallare popper e bootstrap e reinstallare epoi sostituire le righe sopra con queste:
+// try {
+//     window.Popper = require('@popperjs/core');
+//     require('bootstrap/dist/js/bootstrap');
+// } catch (e) {}
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

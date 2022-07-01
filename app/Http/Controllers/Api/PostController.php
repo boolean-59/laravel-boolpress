@@ -5,11 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use Facade\Ignition\QueryRecorder\Query;
 
 class PostController extends Controller
 {
-    public function index(){
-        $posts = Post::all();
+    public function index(Request $request){
+
+        //dd($request->query('category'));
+        if($request->query('category')){
+            $posts = Post::where('category_id',$request->query('category'))->get();
+        } else {
+            $posts = Post::all();
+        }
+
         return response()->json($posts);
     }
 

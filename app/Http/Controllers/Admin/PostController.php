@@ -26,10 +26,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //  $currentUser = Auth::user();
         //  $posts = Post::where('post_id',$currentUser->id)->paginate(5);
+
         $posts =  Post::paginate(5);
         return view('admin.posts.index',compact('posts'));
     }
@@ -97,6 +98,7 @@ class PostController extends Controller
         // if($currentUser->id != $post->user_id && $currentUser->id != 1){
         //     abort(403);
         // }
+
         return view('admin.posts.show', compact('post'));
     }
 
